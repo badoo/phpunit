@@ -12,3 +12,6 @@ Tests/TextUI/*.log
 Tests/TextUI/*.out
 Tests/TextUI/*.php
 phpunit.xml
+.idea
+.DS_Store
+**/.DS_Store
