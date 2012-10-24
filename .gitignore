@@ -13,3 +13,6 @@ Tests/TextUI/*.out
 Tests/TextUI/*.php
 phpunit.xml
 cache.properties
+.idea
+.DS_Store
+**/.DS_Store
