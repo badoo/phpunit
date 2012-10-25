@@ -427,18 +427,21 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
 
                     $writer->process($codeCoverage, $colors);
                 }
-            }
 
-            if (isset($arguments['coverageCSV'])) {
-                $this->printer->write(
-                    "\nGenerating code coverage report in CSV format ..."
-                );
+                if (isset($arguments['coverageCSV'])) {
+                    $this->printer->write(
+                        "\nGenerating code coverage report in CSV format ..."
+                    );
 
-                $writer = new PHP_CodeCoverage_Report_CSV();
-                $writer->process($codeCoverage, $arguments['coverageCSV']);
+                    $writer = new PHP_CodeCoverage_Report_CSV();
+                    $csv = "{$arguments['coverageCSV']}";
+                    $csv = pathinfo($csv, PATHINFO_FILENAME) . "_{$team}.". pathinfo($csv, PATHINFO_EXTENSION);
+                    $this->printer->write(" ({$csv})");
+                    $writer->process($codeCoverage, $csv);
 
-                $this->printer->write(" done\n");
-                unset($writer);
+                    $this->printer->write(" done\n");
+                    unset($writer);
+                }
             }
         }
 
